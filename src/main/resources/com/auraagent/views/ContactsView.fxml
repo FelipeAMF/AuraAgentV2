@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="com.auraagent.controllers.ContactsController" hgap="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints><RowConstraints vgrow="SOMETIMES"/></rowConstraints>
+
+    <VBox styleClass="central-panel" spacing="10" GridPane.columnIndex="0">
+        <HBox spacing="10">
+            <Button text="Criar Nova Lista" onAction="#handleCreateNewList"/>
+            <Button text="Importar CSV" onAction="#handleImportCsv"/>
+            <Button text="Excluir Lista" onAction="#handleDeleteSelectedList" styleClass="danger-button"/>
+        </HBox>
+        <Label text="Minhas Listas" styleClass="panel-title"/>
+        <ListView fx:id="contactListsView" VBox.vgrow="ALWAYS"/>
+    </VBox>
+
+    <VBox styleClass="central-panel" spacing="10" GridPane.columnIndex="1">
+        <Label text="Blacklist (Números Bloqueados)" styleClass="panel-title"/>
+        <ListView fx:id="blacklistNumbersView" VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10">
+            <Button text="Adicionar"/>
+            <Button text="Remover Selecionados"/>
+            <Button text="Limpar Tudo" styleClass="danger-button"/>
+        </HBox>
+    </VBox>
+</GridPane>

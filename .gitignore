@@ -1,0 +1,41 @@
+# Pastas a serem ignoradas
+servidor-node/
+target/
+src/target/
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+
+# Diretórios de IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Arquivos do Eclipse
+.classpath
+.project
+.settings/
+
+# Arquivos do NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+.nb-gradle/
+
+# Arquivos de build do Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# Firebase key
+src/main/resources/firebase_key.json

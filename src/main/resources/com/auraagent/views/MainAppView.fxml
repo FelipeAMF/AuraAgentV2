@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" fx:controller="com.auraagent.controllers.MainAppController"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            styleClass="root" stylesheets="@../../css/styles.css"
+            prefHeight="800.0" prefWidth="1200.0">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="90.0" spacing="15">
+            <padding><Insets left="20" right="20"/></padding>
+            <ImageView fitHeight="60.0" preserveRatio="true">
+                <image><Image url="@../../images/logo_aura.png"/></image>
+                <HBox.margin><Insets right="25.0"/></HBox.margin>
+            </ImageView>
+
+            <fx:define>
+                <ToggleGroup fx:id="navGroup"/>
+            </fx:define>
+            
+            <RadioButton id="Campaign" text="Campanhas" toggleGroup="$navGroup" styleClass="nav-button" selected="true"/>
+            <RadioButton id="Contacts" text="Contatos" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="Templates" text="Modelos" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="WhatsApp" text="Aquecedor" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="AITrainer" text="Treinador IA" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="Extractor" text="Extrator" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="Reports" text="Relatórios" toggleGroup="$navGroup" styleClass="nav-button"/>
+            <RadioButton id="Settings" text="Configurações" toggleGroup="$navGroup" styleClass="nav-button"/>
+
+        </HBox>
+    </top>
+    <center>
+        </center>
+</BorderPane>

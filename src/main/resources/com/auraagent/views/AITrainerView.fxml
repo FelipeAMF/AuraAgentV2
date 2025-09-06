@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="com.auraagent.controllers.AITrainerController" hgap="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" prefWidth="400.0"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints><RowConstraints vgrow="SOMETIMES"/></rowConstraints>
+
+    <VBox fx:id="settingsPane" styleClass="central-panel" spacing="10" GridPane.columnIndex="0">
+        <VBox styleClass="inner-panel" spacing="10" VBox.vgrow="NEVER">
+             <Label text="Controlo do Servidor de IA (Local)" styleClass="panel-title"/>
+             <HBox alignment="CENTER_LEFT" spacing="5">
+                <Label text="Status:"/>
+                <Label fx:id="aiStatusLabel" text="Inativo" styleClass="danger-label"/>
+             </HBox>
+             <Button fx:id="toggleServerButton" text="Ativar Servidor de IA" onAction="#handleToggleServer" maxWidth="Infinity"/>
+        </VBox>
+        <Label text="1. Selecionar Modelo de IA (.gguf):"/>
+        <ComboBox fx:id="modelComboBox" maxWidth="Infinity"/>
+        <Label text="2. Selecione a Conta:"/>
+        <ComboBox fx:id="accountComboBox" maxWidth="Infinity"/>
+        <Label text="3. Defina a Personalidade da IA:"/>
+        <TextArea fx:id="personalityPromptArea" wrapText="true" VBox.vgrow="ALWAYS"/>
+        <Button fx:id="savePromptButton" text="Salvar Personalidade" onAction="#handleSavePrompt" maxWidth="Infinity"/>
+    </VBox>
+
+    <VBox fx:id="chatPane" styleClass="central-panel" spacing="10" GridPane.columnIndex="1">
+        <Label text="4. Teste a Conversa:" styleClass="panel-title"/>
+        <TextArea fx:id="chatHistoryArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10">
+            <TextField fx:id="userTestInput" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="sendTestMessageButton" text="Enviar" onAction="#handleSendTestMessage"/>
+        </HBox>
+    </VBox>
+</GridPane>

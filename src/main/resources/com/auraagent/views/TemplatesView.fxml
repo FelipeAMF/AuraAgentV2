@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="com.auraagent.controllers.TemplatesController" hgap="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" prefWidth="350.0"/>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints><RowConstraints vgrow="SOMETIMES"/></rowConstraints>
+    
+    <VBox styleClass="central-panel" spacing="10" GridPane.columnIndex="0">
+        <Label text="Modelos Salvos" styleClass="panel-title"/>
+        <ListView fx:id="templatesListView" VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10">
+            <Button text="Novo Modelo" onAction="#handleNewTemplate"/>
+            <Button text="Excluir" onAction="#handleDeleteTemplate" styleClass="danger-button"/>
+        </HBox>
+    </VBox>
+    
+    <VBox fx:id="editorPane" styleClass="central-panel" spacing="10" GridPane.columnIndex="1" visible="false">
+        <Label text="Editor de Modelo" styleClass="panel-title"/>
+        <Label text="Nome do Modelo:"/>
+        <TextField fx:id="nameField"/>
+        <Label text="Conteúdo da Mensagem (Spintax):"/>
+        <TextArea fx:id="spintaxContentArea" wrapText="true" VBox.vgrow="ALWAYS"/>
+        <Label text="Intervalo (s):"/>
+        <TextField fx:id="delayField"/>
+        <Button fx:id="saveButton" text="Salvar Alterações" onAction="#handleSaveTemplate" maxWidth="Infinity" styleClass="primary-button"/>
+    </VBox>
+</GridPane>
