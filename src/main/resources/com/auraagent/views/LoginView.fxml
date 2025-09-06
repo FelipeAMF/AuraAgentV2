@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:controller="com.auraagent.controllers.LoginController"
+           xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           styleClass="root" stylesheets="@/css/styles.css">
+    
+    <VBox alignment="CENTER" maxWidth="400" spacing="15" styleClass="central-panel">
+        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+        
+        <ImageView fitWidth="250" preserveRatio="true">
+            <image><Image url="@../../images/logo_aura.png"/></image>
+            <VBox.margin><Insets bottom="15.0" /></VBox.margin>
+        </ImageView>
+
+        <TextField fx:id="emailField" promptText="Email"/>
+        <PasswordField fx:id="passwordField" promptText="Senha"/>
+
+        <Button fx:id="loginButton" text="Entrar" onAction="#handleLogin" maxWidth="Infinity" styleClass="primary-button"/>
+
+        <Text fx:id="statusMessage" styleClass="danger-label" textAlignment="CENTER" wrappingWidth="380.0"/>
+    </VBox>
+</StackPane>

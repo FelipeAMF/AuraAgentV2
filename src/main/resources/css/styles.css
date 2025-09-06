@@ -1,0 +1,144 @@
+/* style.css - Tema Roxo/Azul para JavaFX */
+
+/* === CONFIGURAÇÕES GERAIS E FUNDO === */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-image: url('../images/tema_wallpaper.png');
+    -fx-background-size: cover;
+}
+
+/* === PAINÉIS CENTRAIS === */
+.central-panel {
+    -fx-background-color: rgba(49, 46, 83, 0.8); /* Fundo roxo semitransparente */
+    -fx-background-radius: 12px;
+    -fx-padding: 15px;
+    -fx-border-radius: 12px;
+}
+
+/* Títulos dentro dos painéis */
+.panel-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E0E0E0;
+}
+
+/* Cor do texto geral dentro dos painéis */
+.label {
+    -fx-text-fill: #E0E0E0;
+}
+
+/* === BOTÕES DE NAVEGAÇÃO (RADIOBUTTONS) === */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-pref-width: 130px;
+    -fx-pref-height: 70px;
+    -fx-text-fill: #E0E0E0;
+    -fx-alignment: center;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-border-color: #7B509F;
+}
+
+.nav-button:selected {
+    -fx-background-color: #3C3660;
+    -fx-border-color: #7B509F;
+}
+
+/* === BOTÕES GERAIS === */
+.button {
+    -fx-background-color: #5A4E88;
+    -fx-text-fill: #F1FAEE;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px 18px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #6B5E99;
+}
+
+/* Botão Primário */
+.primary-button {
+    -fx-background-color: #7B509F;
+}
+.primary-button:hover {
+    -fx-background-color: #8D60B0;
+}
+
+/* Botão de Perigo */
+.danger-button {
+    -fx-background-color: #BF4D7F;
+}
+.danger-button:hover {
+    -fx-background-color: #D16091;
+}
+
+/* === CAMPOS DE TEXTO E ÁREAS DE TEXTO === */
+.text-field, .text-area {
+    -fx-background-color: #312E53;
+    -fx-border-color: #4A4670;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #E0E0E0;
+    -fx-prompt-text-fill: #A0A0A0;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #7B509F;
+}
+
+.text-area .content {
+    -fx-background-color: #312E53;
+}
+
+
+/* === LISTVIEW E COMBOBOX === */
+.list-view, .combo-box .list-cell {
+    -fx-background-color: #312E53;
+    -fx-text-fill: #E0E0E0;
+}
+
+.list-view .list-cell:filled:selected, .combo-box .list-cell:filled:selected {
+    -fx-background-color: #5A4E88;
+}
+
+.combo-box {
+    -fx-background-color: #312E53;
+    -fx-border-color: #4A4670;
+    -fx-border-radius: 8px;
+}
+
+/* === CHECKBOX === */
+.check-box {
+    -fx-text-fill: #E0E0E0;
+}
+
+.check-box .box {
+    -fx-background-color: #312E53;
+    -fx-border-color: #4A4670;
+    -fx-border-radius: 3px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #7B509F;
+}
+
+/* === ESTILOS PARA RELATÓRIOS === */
+.report-card {
+    -fx-background-color: #312E53;
+    -fx-padding: 10px;
+    -fx-border-color: #4A4670;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+.report-card-date { -fx-font-weight: bold; }
+.success-label { -fx-fill: #34A853; -fx-font-weight: bold; }
+.danger-label { -fx-fill: #EA4335; -fx-font-weight: bold; }

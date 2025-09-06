@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?> <GridPane hgap="20" vgap="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.auraagent.controllers.CampaignController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES" />
+    </rowConstraints>
+
+    <VBox spacing="20" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <VBox styleClass="central-panel" VBox.vgrow="ALWAYS">
+            <Label styleClass="panel-title" text="Lista de Contatos" />
+            <ComboBox fx:id="contactListComboBox" maxWidth="Infinity" promptText="Selecione uma lista" />
+            <TextArea fx:id="contactsDisplay" editable="false" wrapText="true" VBox.vgrow="ALWAYS" />
+        </VBox>
+        <VBox styleClass="central-panel">
+            <Label styleClass="panel-title" text="Contas para Envio" />
+            <ListView fx:id="sendersListView" prefHeight="100.0" />
+        </VBox>
+    </VBox>
+
+    <VBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <VBox styleClass="central-panel" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label styleClass="panel-title" text="Mensagem (Spintax)" />
+                <Region HBox.hgrow="ALWAYS" />
+                <ComboBox fx:id="templateSelector" prefWidth="200.0" promptText="Selecionar Modelo" />
+            </HBox>
+            <TextArea fx:id="spintaxMessage" minHeight="250" wrapText="true" VBox.vgrow="ALWAYS" />
+        </VBox>
+        <VBox styleClass="central-panel" spacing="15">
+            <GridPane hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" />
+                    <ColumnConstraints hgrow="SOMETIMES" />
+                </columnConstraints>
+                <Button fx:id="testSendButton" onAction="#handleSendTestMessage" text="Enviar Teste" />
+                <Button fx:id="saveTemplateButton" onAction="#handleSaveTemplate" text="Salvar Modelo" GridPane.columnIndex="1" />
+            </GridPane>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Intervalo (s):" />
+                <ComboBox fx:id="delayComboBox" HBox.hgrow="ALWAYS" />
+            </HBox>
+            <GridPane hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" />
+                    <ColumnConstraints hgrow="SOMETIMES" />
+                    <ColumnConstraints hgrow="SOMETIMES" />
+                </columnConstraints>
+                <Button fx:id="startButton" maxWidth="Infinity" onAction="#handleStartSending" styleClass="primary-button" text="Iniciar Envio" />
+                <Button fx:id="pauseButton" maxWidth="Infinity" onAction="#handleTogglePause" text="Pausar" GridPane.columnIndex="1" />
+                <Button fx:id="stopButton" maxWidth="Infinity" onAction="#handleStopSending" styleClass="danger-button" text="Parar" GridPane.columnIndex="2" />
+            </GridPane>
+            <Label fx:id="statusLabel" text="Pronto para iniciar" />
+            <ProgressBar fx:id="progressBar" maxWidth="Infinity" progress="0.0" />
+        </VBox>
+    </VBox>
+</GridPane>
