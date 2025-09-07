@@ -16,7 +16,11 @@
         <ListView fx:id="templatesListView" VBox.vgrow="ALWAYS"/>
         <HBox spacing="10">
             <Button text="Novo Modelo" onAction="#handleNewTemplate"/>
+<<<<<<< HEAD
             <Button fx:id="deleteButton" text="Excluir" onAction="#handleDeleteTemplate" styleClass="danger-button"/>
+=======
+            <Button text="Excluir" onAction="#handleDeleteTemplate" styleClass="danger-button"/>
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         </HBox>
     </VBox>
     

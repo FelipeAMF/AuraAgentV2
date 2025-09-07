@@ -2,16 +2,21 @@ package com.auraagent.controllers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
+=======
+import java.util.List;
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 import java.util.stream.Collectors;
 
 import com.auraagent.models.WhatsappAccount;
 import com.auraagent.services.WhatsappService;
+<<<<<<< HEAD
 import com.auraagent.utils.JavaFxUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +30,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+=======
+
+import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty; // <-- IMPORT ADICIONADO
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ListView;
@@ -46,6 +59,7 @@ public class WhatsAppController implements MainAppController.InitializableContro
     private final WhatsappService whatsappService = new WhatsappService();
     private final ObservableList<CheckBox> accounts = FXCollections.observableArrayList();
     private final SimpleBooleanProperty isWarmerRunning = new SimpleBooleanProperty(false);
+<<<<<<< HEAD
     private Thread warmerThread;
 
     // Lista de mensagens para simular uma conversa natural
@@ -55,13 +69,18 @@ public class WhatsAppController implements MainAppController.InitializableContro
             "Vi aquele filme que recomendaste. Muito bom!", "Sério? Fico feliz que tenhas gostado.",
             "Qual a programação para hoje?", "Acho que vou apenas relaxar em casa.",
             "Ótima ideia. Um bom descanso!", "Para ti também!");
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 
     @Override
     public void initialize(String userId) {
         this.userId = userId;
         accountsListView.setItems(accounts);
 
+<<<<<<< HEAD
         // Associa a visibilidade dos botões ao estado do aquecedor (a correr ou parado)
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         startButton.disableProperty().bind(isWarmerRunning);
         stopButton.disableProperty().bind(isWarmerRunning.not());
         intervalSecondsField.disableProperty().bind(isWarmerRunning);
@@ -70,14 +89,18 @@ public class WhatsAppController implements MainAppController.InitializableContro
         loadAccountsAsync();
     }
 
+<<<<<<< HEAD
     /**
      * Carrega as contas de WhatsApp conectadas usando o WhatsappService e as exibe
      * na lista.
      */
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     private void loadAccountsAsync() {
         whatsappService.getStatusAsync().thenAcceptAsync(accountsData -> {
             Platform.runLater(() -> {
                 accounts.clear();
+<<<<<<< HEAD
                 // Filtra apenas as contas que estão de facto conectadas
                 List<WhatsappAccount> connectedAccounts = accountsData.stream()
                         .filter(acc -> "Conectado".equals(acc.getStatus()))
@@ -85,12 +108,16 @@ public class WhatsAppController implements MainAppController.InitializableContro
 
                 for (WhatsappAccount acc : connectedAccounts) {
                     // Adiciona o ID da sessão e o número de telefone para fácil identificação
+=======
+                for (WhatsappAccount acc : accountsData) {
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
                     accounts.add(new CheckBox(acc.getSessionId() + " (" + acc.getPhoneNumber() + ")"));
                 }
             });
         });
     }
 
+<<<<<<< HEAD
     /**
      * Ação do botão "Iniciar". Valida as seleções e inicia a thread de aquecimento.
      */
@@ -181,12 +208,34 @@ public class WhatsAppController implements MainAppController.InitializableContro
      * 
      * @param message A mensagem a ser exibida.
      */
+=======
+    @FXML
+    private void handleStartWarmer() {
+        List<CheckBox> selectedAccounts = accounts.stream()
+                .filter(CheckBox::isSelected)
+                .collect(Collectors.toList());
+
+        if (selectedAccounts.size() < 2) {
+            return;
+        }
+        isWarmerRunning.set(true);
+        logMessage("--- Aquecedor Iniciado ---");
+    }
+
+    @FXML
+    private void handleStopWarmer() {
+        isWarmerRunning.set(false);
+        logMessage("--- Aquecedor Parado pelo utilizador ---");
+    }
+
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     private void logMessage(String message) {
         Platform.runLater(() -> {
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             logOutputArea.appendText(String.format("[%s] %s\n", timestamp, message));
         });
     }
+<<<<<<< HEAD
 
     /**
      * Método auxiliar para encontrar o número de telefone correspondente a um ID de
@@ -243,4 +292,6 @@ public class WhatsAppController implements MainAppController.InitializableContro
         });
         return future;
     }
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 }

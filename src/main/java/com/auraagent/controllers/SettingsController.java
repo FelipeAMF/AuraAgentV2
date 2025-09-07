@@ -33,7 +33,10 @@ public class SettingsController implements MainAppController.InitializableContro
     private Text qrStatusText;
 
     private String userId;
+<<<<<<< HEAD
     // Instancia o serviço que acabamos de implementar.
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     private final WhatsappService whatsappService = new WhatsappService();
     private final ObservableList<WhatsappAccount> accounts = FXCollections.observableArrayList();
     private Timeline statusTimer;
@@ -62,11 +65,16 @@ public class SettingsController implements MainAppController.InitializableContro
             updateQrCodeDisplay(newVal);
         });
 
+<<<<<<< HEAD
         // Inicia o timer para atualização automática de status
+=======
+        // Inicia o timer para atualização automática
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         setupStatusTimer();
         refreshData(); // Faz a primeira chamada imediatamente
     }
 
+<<<<<<< HEAD
     // Métodos onShown e onHidden podem ser adicionados aqui se a atualização em
     // background
     // precisar ser pausada quando a tela não estiver visível para economizar
@@ -78,6 +86,26 @@ public class SettingsController implements MainAppController.InitializableContro
         statusTimer = new Timeline(new KeyFrame(Duration.seconds(3), event -> refreshData()));
         statusTimer.setCycleCount(Timeline.INDEFINITE);
         statusTimer.play(); // Inicia o timer
+=======
+    // O MainAppController chamará este método quando a vista ficar visível
+    public void onShown() {
+        if (statusTimer != null && statusTimer.getStatus() != Timeline.Status.RUNNING) {
+            statusTimer.play();
+            refreshData();
+        }
+    }
+
+    // O MainAppController chamará este método quando a vista ficar oculta
+    public void onHidden() {
+        if (statusTimer != null) {
+            statusTimer.stop();
+        }
+    }
+
+    private void setupStatusTimer() {
+        statusTimer = new Timeline(new KeyFrame(Duration.seconds(3), event -> refreshData()));
+        statusTimer.setCycleCount(Timeline.INDEFINITE);
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     }
 
     private void refreshData() {
@@ -86,21 +114,34 @@ public class SettingsController implements MainAppController.InitializableContro
         whatsappService.getStatusAsync().thenAcceptAsync(sessions -> {
             Platform.runLater(() -> {
                 accounts.setAll(sessions);
+<<<<<<< HEAD
                 // Tenta manter a seleção do usuário após a atualização da lista
                 if (currentSelection != null) {
+=======
+                // Tenta manter a seleção anterior
+                if (currentSelection != null) {
+                    // Procura pela conta com o mesmo sessionId na nova lista
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
                     Optional<WhatsappAccount> reselect = accounts.stream()
                             .filter(acc -> acc.getSessionId().equals(currentSelection.getSessionId()))
                             .findFirst();
                     reselect.ifPresent(acc -> accountsListView.getSelectionModel().select(acc));
                 }
+<<<<<<< HEAD
                 // Atualiza a área do QR code com base na conta selecionada
+=======
+                // Atualiza o QR code caso o status da conta selecionada tenha mudado
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
                 updateQrCodeDisplay(accountsListView.getSelectionModel().getSelectedItem());
             });
         });
     }
 
     private void updateQrCodeDisplay(WhatsappAccount account) {
+<<<<<<< HEAD
         // Lógica para exibir o QR Code ou mensagens de status, já estava correta.
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         if (account == null) {
             qrCodeImageView.setImage(null);
             qrStatusText.setText("Selecione ou adicione uma conta.");
@@ -129,7 +170,11 @@ public class SettingsController implements MainAppController.InitializableContro
             qrStatusText.setVisible(true);
         } else {
             qrCodeImageView.setImage(null);
+<<<<<<< HEAD
             qrStatusText.setText("Aguardando status do servidor...");
+=======
+            qrStatusText.setText("A inicializar...\nIsto pode demorar alguns segundos.");
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
             qrCodeImageView.setVisible(false);
             qrStatusText.setVisible(true);
         }
@@ -139,14 +184,23 @@ public class SettingsController implements MainAppController.InitializableContro
     private void handleAddAccount() {
         TextInputDialog dialog = new TextInputDialog("Nova_Conta");
         dialog.setTitle("Nova Conta");
+<<<<<<< HEAD
         dialog.setHeaderText("Digite um nome para a nova conta (sem espaços ou caracteres especiais):");
         dialog.setContentText("Nome da Sessão:");
+=======
+        dialog.setHeaderText("Digite um nome para a nova conta (ex: Vendas):");
+        dialog.setContentText("ID da Sessão:");
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(sessionId -> {
             if (!sessionId.isBlank()) {
+<<<<<<< HEAD
                 // Remove caracteres que podem causar problemas em nomes de arquivo ou APIs.
                 String sanitizedSessionId = sessionId.replaceAll("[^a-zA-Z0-9_-]", "");
+=======
+                String sanitizedSessionId = sessionId.replaceAll("[^a-zA-Z0-9_-]", "-");
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 
                 boolean exists = accounts.stream()
                         .anyMatch(acc -> acc.getSessionId().equalsIgnoreCase(sanitizedSessionId));
@@ -155,12 +209,18 @@ public class SettingsController implements MainAppController.InitializableContro
                     return;
                 }
 
+<<<<<<< HEAD
                 // --- LÓGICA REAL ---
                 // Chama o método real do serviço para iniciar a conexão.
                 whatsappService.connectAsync(sanitizedSessionId);
 
                 // Aguarda um pouco para dar tempo ao servidor gerar o QR code antes de
                 // atualizar a UI.
+=======
+                // whatsappService.connectAsync(sanitizedSessionId); // Chamada real ao serviço
+                System.out.println("A adicionar conta: " + sanitizedSessionId);
+                // Dá um tempo para o servidor gerar o QR code antes de atualizar
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
                 new Timeline(new KeyFrame(Duration.seconds(1.5), e -> refreshData())).play();
             }
         });
@@ -174,6 +234,7 @@ public class SettingsController implements MainAppController.InitializableContro
             return;
         }
 
+<<<<<<< HEAD
         // --- LÓGICA REAL ---
         // Chama o método real do serviço para desconectar.
         whatsappService.disconnectAsync(selected.getSessionId());
@@ -184,6 +245,10 @@ public class SettingsController implements MainAppController.InitializableContro
 
         // Aguarda um pouco para dar tempo ao servidor processar e então atualiza a
         // lista.
+=======
+        // whatsappService.disconnectAsync(selected.getSessionId()); // Chamada real
+        System.out.println("A desconectar conta: " + selected.getSessionId());
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         new Timeline(new KeyFrame(Duration.seconds(1.5), e -> refreshData())).play();
     }
 }

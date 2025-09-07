@@ -8,7 +8,11 @@
 
 <StackPane fx:controller="com.auraagent.controllers.LoginController"
            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<<<<<<< HEAD
            styleClass="root" stylesheets="@/css/styles.css">
+=======
+           styleClass="root" stylesheets="@../../css/styles.css">
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     
     <VBox alignment="CENTER" maxWidth="400" spacing="15" styleClass="central-panel">
         <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>

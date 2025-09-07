@@ -1,5 +1,6 @@
 package com.auraagent.services;
 
+<<<<<<< HEAD
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
@@ -21,17 +22,26 @@ import com.sun.jna.Native;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.platform.win32.WinDef.RECT;
+=======
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 
 public class ScraperWorker {
 
     private final int stopThreshold;
     private final int scrollPauseMs;
+<<<<<<< HEAD
     private final ITesseract tesseract;
     private final Set<String> alreadyFoundNumbers = new HashSet<>();
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 
     public ScraperWorker(int stopThreshold, double scrollPause) {
         this.stopThreshold = stopThreshold;
         this.scrollPauseMs = (int) (scrollPause * 1000);
+<<<<<<< HEAD
 
         // Inicializa o motor de OCR
         this.tesseract = new Tesseract();
@@ -118,11 +128,36 @@ public class ScraperWorker {
             }
 
             // Mensagem final
+=======
+    }
+
+    public void run(Consumer<String> progress, AtomicBoolean cancellationToken) {
+        int scrollsWithoutFinding = 0;
+        Random random = new Random();
+
+        try {
+            while (scrollsWithoutFinding < stopThreshold && !cancellationToken.get()) {
+                progress.accept("A rolar o ecrã e a procurar números...");
+                Thread.sleep(scrollPauseMs);
+
+                // SIMULAÇÃO: 20% de chance de encontrar um número
+                if (random.nextInt(5) == 0) {
+                    String fakeNumber = String.format("+55 61 9%04d-%04d", random.nextInt(10000), random.nextInt(10000));
+                    progress.accept("Número encontrado: " + fakeNumber);
+                    scrollsWithoutFinding = 0; // Reseta a contagem
+                } else {
+                    scrollsWithoutFinding++;
+                    progress.accept(String.format("Nenhum número novo encontrado (%d/%d)...", scrollsWithoutFinding, stopThreshold));
+                }
+            }
+
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
             if (cancellationToken.get()) {
                 progress.accept("Extração parada pelo utilizador.");
             } else {
                 progress.accept("Extração concluída (limite de tentativas atingido).");
             }
+<<<<<<< HEAD
 
         } catch (Exception e) {
             Thread.currentThread().interrupt();
@@ -152,4 +187,11 @@ public class ScraperWorker {
         }
         return numbers;
     }
+=======
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            progress.accept("Extração interrompida.");
+        }
+    }
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 }

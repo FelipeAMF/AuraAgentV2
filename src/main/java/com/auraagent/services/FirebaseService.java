@@ -22,16 +22,22 @@ import java.util.stream.Collectors;
 
 public class FirebaseService {
 
+<<<<<<< HEAD
     // A sua chave de API para a autenticação do Firebase.
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     private static final String FIREBASE_API_KEY = "AIzaSyCLYUO-M55o4rE1wJ3uLyc8pRkviJpYiYo";
     private static final HttpClient httpClient = HttpClient.newHttpClient();
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
+<<<<<<< HEAD
     /**
      * Inicializa a conexão com o Firebase. Carrega as credenciais a partir do
      * ficheiro firebase_key.json nos recursos. O programa é encerrado se o ficheiro
      * de credenciais não for encontrado.
      */
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     public static void initialize() {
         if (FirebaseApp.getApps().isEmpty()) {
             try {
@@ -54,6 +60,7 @@ public class FirebaseService {
     }
 
     // --- AUTENTICAÇÃO ---
+<<<<<<< HEAD
     /**
      * Autentica um utilizador com e-mail and senha usando a API REST do Firebase
      * Authentication.
@@ -62,6 +69,8 @@ public class FirebaseService {
      * @param password A senha do utilizador.
      * @return Um CompletableFuture contendo a resposta da autenticação.
      */
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
     public static CompletableFuture<FirebaseAuthResponse> signInAsync(String email, String password) {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + FIREBASE_API_KEY;
         Map<String, Object> payload = new HashMap<>();
@@ -141,7 +150,10 @@ public class FirebaseService {
     }
 
     public static CompletableFuture<Boolean> createContactList(String userId, String token, String listName) {
+<<<<<<< HEAD
         // Usa um placeholder para garantir que o "nó" da lista seja criado no Firebase.
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         return updateChildrenAsync("users/" + userId + "/contact_lists/" + listName, Map.of("_placeholder", true));
     }
 
@@ -152,7 +164,10 @@ public class FirebaseService {
     public static CompletableFuture<Boolean> addContactsToList(String userId, String listName, List<String> contacts) {
         Map<String, Object> updates = new HashMap<>();
         for (String contact : contacts) {
+<<<<<<< HEAD
             // Adiciona cada contacto como uma chave com o valor 'true'.
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
             updates.put(contact, true);
         }
         String path = "users/" + userId + "/contact_lists/" + listName;
@@ -173,7 +188,11 @@ public class FirebaseService {
 
     public static CompletableFuture<Boolean> removeFromBlacklist(String userId, String token, List<String> numbers) {
         Map<String, Object> updates = numbers.stream()
+<<<<<<< HEAD
                 .collect(Collectors.toMap(number -> number, number -> null)); // Definir como null remove a chave.
+=======
+                .collect(Collectors.toMap(number -> number, number -> null));
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         return updateChildrenAsync("users/" + userId + "/blacklist", updates);
     }
 
@@ -193,6 +212,7 @@ public class FirebaseService {
                 new GenericTypeIndicator<Map<String, Object>>() {
                 });
     }
+<<<<<<< HEAD
 
     /**
      * Salva ou atualiza um modelo de campanha no Firebase.
@@ -259,4 +279,6 @@ public class FirebaseService {
         });
         return future;
     }
+=======
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 }

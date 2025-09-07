@@ -7,7 +7,11 @@
 
 <BorderPane fx:id="mainPane" fx:controller="com.auraagent.controllers.MainAppController"
             xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<<<<<<< HEAD
             styleClass="root" stylesheets="/css/styles.css"
+=======
+            styleClass="root" stylesheets="@../../css/styles.css"
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
             prefHeight="800.0" prefWidth="1200.0">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="90.0" spacing="15">
@@ -16,9 +20,17 @@
                 <image><Image url="@../../images/logo_aura.png"/></image>
                 <HBox.margin><Insets right="25.0"/></HBox.margin>
             </ImageView>
+<<<<<<< HEAD
             <fx:define>
                 <ToggleGroup fx:id="navGroup"/>
             </fx:define>
+=======
+
+            <fx:define>
+                <ToggleGroup fx:id="navGroup"/>
+            </fx:define>
+            
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
             <RadioButton id="Campaign" text="Campanhas" toggleGroup="$navGroup" styleClass="nav-button" selected="true"/>
             <RadioButton id="Contacts" text="Contatos" toggleGroup="$navGroup" styleClass="nav-button"/>
             <RadioButton id="Templates" text="Modelos" toggleGroup="$navGroup" styleClass="nav-button"/>
@@ -27,8 +39,16 @@
             <RadioButton id="Extractor" text="Extrator" toggleGroup="$navGroup" styleClass="nav-button"/>
             <RadioButton id="Reports" text="Relatórios" toggleGroup="$navGroup" styleClass="nav-button"/>
             <RadioButton id="Settings" text="Configurações" toggleGroup="$navGroup" styleClass="nav-button"/>
+<<<<<<< HEAD
         </HBox>
     </top>
     <center>
     </center>
+=======
+
+        </HBox>
+    </top>
+    <center>
+        </center>
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
 </BorderPane>

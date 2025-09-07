@@ -15,7 +15,11 @@
         <HBox spacing="10">
             <Button text="Criar Nova Lista" onAction="#handleCreateNewList"/>
             <Button text="Importar CSV" onAction="#handleImportCsv"/>
+<<<<<<< HEAD
             <Button fx:id="deleteListButton" text="Excluir Lista" onAction="#handleDeleteSelectedList" styleClass="danger-button"/>
+=======
+            <Button text="Excluir Lista" onAction="#handleDeleteSelectedList" styleClass="danger-button"/>
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         </HBox>
         <Label text="Minhas Listas" styleClass="panel-title"/>
         <ListView fx:id="contactListsView" VBox.vgrow="ALWAYS"/>
@@ -25,9 +29,15 @@
         <Label text="Blacklist (Números Bloqueados)" styleClass="panel-title"/>
         <ListView fx:id="blacklistNumbersView" VBox.vgrow="ALWAYS"/>
         <HBox spacing="10">
+<<<<<<< HEAD
             <Button text="Adicionar" onAction="#handleAddToBlacklist"/>
             <Button text="Remover Selecionados" onAction="#handleRemoveFromBlacklist"/>
             <Button text="Limpar Tudo" onAction="#handleClearBlacklist" styleClass="danger-button"/>
+=======
+            <Button text="Adicionar"/>
+            <Button text="Remover Selecionados"/>
+            <Button text="Limpar Tudo" styleClass="danger-button"/>
+>>>>>>> edf476c85c54429cd2c4a02aa6712b1e42808e3f
         </HBox>
     </VBox>
 </GridPane>
